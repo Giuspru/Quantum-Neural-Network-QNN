@@ -20,7 +20,7 @@ def circuit(x, weights):
 
 #Target function:
 def target_function(x):
-    return 3 * x + 2 * x**2
+    return 3 * x + 2 * x**2  # <-- riscala a [-1,1]
 
 # Output is mapped in [-1,1] → f(x) ∈ [0, 5] eve if x ∈ [0, 1]
 
@@ -46,7 +46,7 @@ weights = np.random.normal(0, 1, 3, requires_grad=True)
 
 # Ottimizzatore
 opt = qml.GradientDescentOptimizer(stepsize=0.1)
-epochs = 1000
+epochs = 100
 
 for i in range(epochs):
     weights = opt.step(lambda w: cost(w, X_train, Y_train), weights)
