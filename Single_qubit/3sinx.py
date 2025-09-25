@@ -47,7 +47,7 @@ def cost(weights, X, Y):
 
 
 # Dati di training
-X_train = np.linspace(0, 2 * np.pi, 20)
+X_train = np.linspace(0, 2 * np.pi, 100)
 Y_train = target_function(X_train)
 solo_seno = np.sin(X_train)  #Target function
 print("\nX:")
@@ -69,16 +69,21 @@ print(qml.draw(circuit)(X_train[0], weights))
 
 #Ottimization:
 opt = qml.GradientDescentOptimizer(stepsize=0.01)
-epochs = 50
+epochs = 200
 
 
 print("\nInizio ottimizzazione:\n")
 for i in range(epochs):
-    print("weights:\n")
-    print(weights)
+    #print("weights:\n")
+    #print(weights)
     weights = opt.step(lambda w: cost(w, X_train, Y_train), weights)
-    if i % 2 == 0:
+    if i % 50 == 0:
         print(f"Epoch {i} - Cost: {cost(weights, X_train, Y_train):.4f}")
+        print(weights)
+    elif i % 199 == 0:
+        print(f"Epoch {i} - Cost: {cost(weights, X_train, Y_train):.4f}")
+        print(weights)
+
 
 
 # Validation

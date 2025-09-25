@@ -33,7 +33,7 @@ def circuit(x , weights):
     return qml.expval(qml.PauliZ(1))
 
 def target_function(x):
-    return x**3 
+    return x**2
 
 def scale_output(outuput):
     return((outuput+1))
@@ -52,7 +52,7 @@ print(weights)
 print("\n")
 print(qml.draw(circuit)(0.5, weights), "\n")
 
-X_train = np.linspace(0,1,200)
+X_train = np.linspace(0,1,50)
 #np.random.shuffle(X_train)
 print("X_train:\n", X_train)
 
@@ -65,7 +65,7 @@ print("\nY_train:" , Y_train)
 
 
 opt = qml.AdamOptimizer(0.2)
-epochs = 200
+epochs = 50
 
 for i in range(epochs):
     weights = opt.step(lambda w: cost(w, X_train, Y_train), weights)
