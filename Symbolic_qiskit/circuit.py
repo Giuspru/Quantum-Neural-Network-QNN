@@ -7,7 +7,7 @@ from qiskit.circuit import Parameter, ParameterVector
 '''
     We want to implent the circuit used in trained pennylane circuit:
     0: ──RX(0.00)──RY(1.47)──RZ(-0.21)──RX(1.00)─┤  <Z>
-'''
+''' 
 
 # Build a quantum circuit
 circuit = QuantumCircuit(1)

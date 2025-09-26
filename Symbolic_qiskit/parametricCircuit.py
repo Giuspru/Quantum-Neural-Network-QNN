@@ -38,3 +38,4 @@ new_psi = psi.subs({
 })
 new_formula = new_psi.to_sympy()
 print("\n- The new symbolical form of the circuit:  " , new_formula ,"\n")
+ 
