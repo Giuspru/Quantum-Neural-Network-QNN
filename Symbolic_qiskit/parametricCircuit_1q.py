@@ -1,5 +1,6 @@
 import qiskit 
 import qiskit_symb
+from sympy import Symbol, I 
 
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter, ParameterVector
@@ -34,11 +35,10 @@ print("\n- The symbolical form of the circuit:  " , formula ,"\n")
 
 #Insert some data: 
 
-new_psi = psi.subs({
-    y : 1 , 
-    p1 : 2,
-    p2 : 3,
-    p3 : 4
+new_psi = psi.subs({ 
+    p1 : 1.47,
+    p2 : -0.21,
+    p3 : 1.00
 })
 new_formula = new_psi.to_sympy()
 print("\n- The new symbolical form of the circuit:  " , new_formula ,"\n")
