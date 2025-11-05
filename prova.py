@@ -8,8 +8,8 @@ from qiskit.circuit import Parameter, ParameterVector
     We want to implent the circuit used in trained pennylane circuit:
     0: ──RX(y)──RY(p[0])──RZ(p[1])──RX([2])─┤  <Z>
 '''
-y = Parameter('y')
-print("\n- This is the classical value encoded into the parameter circuit: ", y)
+x = Parameter('x')
+print("\n- This is the classical value encoded into the parameter circuit: ", x)
 p1 = Parameter('p1')
 p2 = Parameter('p2')
 p3 = Parameter('p3')
@@ -17,17 +17,22 @@ print("\n- These are the circuit's parameteres (angles): " ,p1,p2,p3)
 
 # Build a quantum circuit
 circuit = QuantumCircuit(3)
-circuit.rx(y, 0)
+circuit.h(1)
+circuit.cx(1,2)
+circuit.barrier(0,1,2)
+
+
+circuit.rx(x, 0)
 circuit.ry(p1,0)
 circuit.rz(p2,0)
-circuit.rx(p3,0)
-circuit.rx(y, 1)
-circuit.ry(p1,1)
-circuit.rz(p2,1)
+#circuit.rx(p3,0)
+#circuit.rx(x, 1)
+#circuit.ry(p1,1)
+#circuit.rz(p2,1)
 circuit.rx(p3,1)
-circuit.rx(y, 2)
-circuit.ry(p1,2)
-circuit.rz(p2,2)
+#circuit.rx(y, 2)
+#circuit.ry(p1,2)
+#circuit.rz(p2,2)
 circuit.rx(p3,2)
 #circuit.measure(range(2), range(2))
 
